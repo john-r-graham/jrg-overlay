@@ -23,8 +23,12 @@ PATCHES=(
 
 S="${WORKDIR}/${MY_P}"
 
-src_configure() {
+src_prepare() {
+	default
 	eautoreconf
+}
+
+src_configure() {
 	econf \
 		$(use_enable debug) \
 		$(use_enable static-libs static)
