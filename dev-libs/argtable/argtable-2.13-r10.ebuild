@@ -19,6 +19,7 @@ IUSE="doc debug examples static-libs"
 
 PATCHES=(
 	"${FILESDIR}/${P}-long-type.patch"
+	"${FILESDIR}/${P}-ctype-warnings.patch"
 )
 
 S="${WORKDIR}/${MY_P}"
