@@ -1,14 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit versionator autotools
+EAPI=7
+inherit autotools
 
 DESCRIPTION="An ANSI C library for parsing GNU-style command-line options with minimal fuss"
 HOMEPAGE="http://argtable.sourceforge.net/"
 
-MY_PV="$(replace_version_separator 1 '-')"
-MY_P=${PN}${MY_PV}
+MY_P="${PN}$(ver_rs 1 '-')"
 
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
