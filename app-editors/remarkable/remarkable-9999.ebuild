@@ -12,7 +12,7 @@ HOMEPAGE="https://remarkableapp.github.io/index.html"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~m68k ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -57,10 +57,13 @@ src_prepare() {
 src_install() {
 	python_moduleinto remarkable
 	python_domodule markdown pdfkit remarkable remarkable_lib bin
-	dodir "/usr/share/${PN}"
+	# exeinto /usr/bin
+	# doexe ${S}/Temp/remarkable
+	python_newexe "${S}/Temp/remarkable" ${PN}
+
+	dodir /usr/share/${PN}
 	cp -R "${S}/data/*" "${D}/usr/share/${PN}/"
-	exeinto /usr/bin
-	doexe "${S}/Temp/remarkable"
+
 	chmod +x "${D}/$(python_get_sitedir)/remarkable/bin/remarkable"
 
 	doicon data/ui/remarkable.png
