@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{6..8} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit git-r3 python-single-r1 desktop
 
@@ -48,20 +48,20 @@ src_unpack() {
 
 src_prepare() {
 	default
-	cd ${S}
+	cd "${S}"
 	mkdir Temp
-	cp ${FILESDIR}/remarkable Temp
+	cp "${FILESDIR}/remarkable" Temp
 	sed -i "s|PYTHON_SITEDIR|$(python_get_sitedir)|" Temp/remarkable
 }
 
 src_install() {
 	python_moduleinto remarkable
 	python_domodule markdown pdfkit remarkable remarkable_lib bin
-	dodir /usr/share/${PN}
-	cp -R ${S}/data/* ${D}/usr/share/${PN}/
+	dodir "/usr/share/${PN}"
+	cp -R "${S}/data/*" "${D}/usr/share/${PN}/"
 	exeinto /usr/bin
-	doexe ${S}/Temp/remarkable
-	chmod +x ${D}/$(python_get_sitedir)/remarkable/bin/remarkable
+	doexe "${S}/Temp/remarkable"
+	chmod +x "${D}/$(python_get_sitedir)/remarkable/bin/remarkable"
 
 	doicon data/ui/remarkable.png
 	domenu remarkable.desktop
