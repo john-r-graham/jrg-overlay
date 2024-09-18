@@ -27,7 +27,7 @@ fi
 
 inherit bash-completion-r1 flag-o-matic multibuild optfeature python-any-r1 toolchain-funcs
 
-DESCRIPTION="GNU GRUB boot loader"
+DESCRIPTION="GNU GRUB boot loader w/ JRG Experimental ZFS Dataset Identification Patch"
 HOMEPAGE="https://www.gnu.org/software/grub/"
 
 MY_P=${P}
